@@ -1,0 +1,91 @@
+# Publishes the mod to lode.gg for every v* tag. The tag must equal mod_version in
+# gradle.properties, so a tag can never ship a jar that names a different version.
+
+name: release
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Full history, so the fallback changelog can list the commits since the last tag.
+          fetch-depth: 0
+      - name: validate gradle wrapper
+        uses: gradle/actions/wrapper-validation@v4
+      - name: setup jdk
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+      - name: read version
+        id: version
+        run: |
+          version=$(grep '^mod_version=' gradle.properties | cut -d= -f2)
+          minecraft=$(grep '^minecraft_version=' gradle.properties | cut -d= -f2)
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::tag $GITHUB_REF_NAME does not match mod_version $version"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "minecraft=$minecraft" >> "$GITHUB_OUTPUT"
+      - name: build
+        run: |
+          chmod +x ./gradlew
+          ./gradlew build
+      - name: write changelog
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          # changelogs/v<version>.md when committed, otherwise the commits since the last tag.
+          if [ -f "changelogs/v$VERSION.md" ]; then
+            cp "changelogs/v$VERSION.md" changelog.md
+          else
+            echo "::warning::changelogs/v$VERSION.md not found, using the commit log"
+            previous=$(git describe --tags --abbrev=0 "$GITHUB_REF_NAME^" 2>/dev/null || true)
+            {
+              echo "# Interpolation Fix - v$VERSION"
+              git log --pretty='- %s' ${previous:+$previous..}"$GITHUB_REF_NAME"
+            } > changelog.md
+          fi
+          size=$(wc -c < changelog.md)
+          if [ "$size" -gt 2000 ]; then
+            echo "::error::changelog is $size characters, lode.gg truncates over 2000"
+            exit 1
+          fi
+      - name: publish to lode.gg
+        env:
+          LODESTONE_RELEASE_KEY: ${{ secrets.LODESTONE_RELEASE_KEY }}
+          VERSION: ${{ steps.version.outputs.version }}
+          MINECRAFT: ${{ steps.version.outputs.minecraft }}
+        run: |
+          jar="build/libs/Interpolation-Fix-$VERSION.jar"
+          status=$(curl -sS -o response.json -w '%{http_code}' -X POST \
+            "https://lode.gg/api/mods/interpolation-fix/versions" \
+            -H "Authorization: Bearer $LODESTONE_RELEASE_KEY" \
+            -F "files=@$jar;type=application/java-archive" \
+            -F "title=v$VERSION (MC: $MINECRAFT)" \
+            -F "versionNumber=v$VERSION" \
+            -F "changelog=<changelog.md" \
+            -F "releaseChannel=release" \
+            -F 'supportedPlatforms=["Fabric"]' \
+            -F "gameVersions=[\"$MINECRAFT\"]")
+          echo "lode.gg answered HTTP $status"
+          if [ "$status" != "201" ]; then
+            cat response.json
+            exit 1
+          fi
+      - name: github release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "build/libs/Interpolation-Fix-$VERSION.jar" \
+            --title "v$VERSION" --notes-file changelog.md
