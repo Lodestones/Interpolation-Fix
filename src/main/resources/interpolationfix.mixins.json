@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "gg.lode.interpolationfix.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "LivingInterpolationMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

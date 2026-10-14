@@ -1,0 +1,63 @@
+# gradle
+
+.gradle/
+build/
+out/
+classes/
+
+# eclipse
+
+*.launch
+
+# idea
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# vscode
+
+.settings/
+.vscode/
+bin/
+.classpath
+.project
+
+# macos
+
+*.DS_Store
+
+# fabric
+
+run/
+
+# java
+
+hs_err_*.log
+replay_*.log
+*.hprof
+*.jfr
+
+mappings/
+
+# grunt obfuscator
+
+/grunt/
+/config.json
+
+# extracted dependency sources (these are unpacked at the repo root)
+# Leading slash matters: a bare `imgui/` matches at any depth, which silently
+# ignored src/main/java/gg/lode/lectern/client/imgui — our own source.
+/cl/
+/com/
+/imgui/
+/org/
+
+# docs (managed in Obsidian)
+BODY_ANIM_PLAN.md
+CHANGELOG.md
+.claude/
+
+# JNIC toolchain: CI links the shared Lodestone tools folder here. Never commit it.
+/.tools

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "interpolationfix",
+  "version": "${version}",
+  "name": "Interpolation Fix",
+  "description": "Brings back the smooth 26.2 entity interpolation. Fixes the player and mob stutter introduced in 26.3 (MC-311974).",
+  "authors": [
+    "Apollo30"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Lodestones/Interpolation-Fix",
+    "sources": "https://github.com/Lodestones/Interpolation-Fix",
+    "issues": "https://github.com/Lodestones/Interpolation-Fix/issues",
+    "discord": "https://discord.gg/lodestone"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "mixins": [
+    "interpolationfix.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "${minecraft_version}"
+  }
+}
