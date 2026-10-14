@@ -1,7 +1,7 @@
 <div align="center">
 <br />
-<img alt="Interpolation Fix" width="200" src="src/main/resources/assets/interpolationfix/icon.png" />
-<h1>Interpolation Fix</h1>
+<img alt="Interpolation Fix" width="640" src=".github/banner.png" />
+<br />
 <b>
   <i>Brings back the smooth entity movement from Minecraft 26.2. Fixes the stutter on players and mobs introduced in 26.3.</i>
 </b>
