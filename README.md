@@ -14,6 +14,21 @@
 
 <br />
 
+## ⚠️ WARNING ⚠️
+Any server whose anticheat is **modeled specifically on 26.3** will **flag you for Reach and can ban you**. Use this mod with heavy caution, preferably for recordings rather than combat.
+
+| Servers       | Allows 26.3? | Tested? | Flagged? | Bannable? |
+|---------------|--------------|---------|----------|-----------|
+| mcpvp.com     | ✅           | ✅      | ✅       | ✅        |
+| mcpvp.club    | ✅           | ✅      | ❓       | ❓        |
+| minemen.club  | ✅           | ✅      | ❓       | ❌        |
+| pvphq.net     | ❌           | ❓      | ❓       | ❓        |
+| pvplegacy.com | ❌           | ❓      | ❓       | ❓        |
+| donutsmp.net  | ✅           | ✅      | ❓       | ❓        |
+| pvptiers.com  | ❌           | ❓      | ❓       | ❓        |
+
+Any server that runs anticheats on 26.2 or lower with the old interpolation combined with ViaVersion will continue using the old interpolation which should theoretically make you safe.
+
 ## The problem
 
 Minecraft 26.3 changed how your client smooths out the movement of other players and mobs. The new method often runs out of movement before the server sends the next update, so entities freeze for a moment and then jump forward. In PvP, on minigame servers, or just watching a friend run past, everything looks choppy.
