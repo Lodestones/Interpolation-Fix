@@ -28,6 +28,10 @@ bin/
 
 *.DS_Store
 
+# windows
+
+Thumbs.db
+
 # fabric
 
 run/
