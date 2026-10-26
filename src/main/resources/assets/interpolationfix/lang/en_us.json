@@ -1,0 +1,5 @@
+{
+  "key.interpolationfix.toggle": "Toggle Interpolation Fix",
+  "interpolationfix.toggle.on": "Interpolation Fix: ON (26.2 smoothing)",
+  "interpolationfix.toggle.off": "Interpolation Fix: OFF (vanilla 26.3 smoothing)"
+}

@@ -43,8 +43,8 @@ Interpolation Fix puts players and mobs back on the 26.2 movement smoothing, whi
 
 - **Client-side only.** Works on any server, no server mod or plugin needed.
 - **No dependencies.** Does not require Fabric API.
-- **No config.** Drop it in your mods folder and you are done.
-- **Tiny.** A single change with no effect on performance.
+- **Toggle keybind.** Bind "Toggle Interpolation Fix" under Controls > Misc to switch back to vanilla 26.3 smoothing at any time, like before joining a strict server. It's unbound by default and remembers your choice.
+- **Tiny.** No effect on performance.
 - **Singleplayer safe.** Only your client's view changes; worlds and servers are untouched.
 
 ## Compatibility

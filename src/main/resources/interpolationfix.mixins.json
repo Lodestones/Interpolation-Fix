@@ -4,7 +4,9 @@
   "package": "gg.lode.interpolationfix.mixin",
   "compatibilityLevel": "JAVA_25",
   "client": [
-    "LivingInterpolationMixin"
+    "LivingInterpolationMixin",
+    "MinecraftMixin",
+    "OptionsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,7 +1,7 @@
 package gg.lode.interpolationfix.mixin;
 
+import gg.lode.interpolationfix.ToggleableInterpolationHandler;
 import net.minecraft.world.entity.InterpolationHandler;
-import net.minecraft.world.entity.LinearInterpolationHandler;
 import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,8 +15,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * <p>26.3's stepped interpolation lasts {@code updateInterval} ticks, so for players (2) and most
  * mobs it runs out before the next move packet lands and the entity stands still for a tick, which
  * reads as stutter (MC-311974, MC-311976). Three ticks over a two-tick packet rate leaves the
- * spare tick vanilla used to have. Only the client side is swapped: the integrated server still
- * needs the stepped tracker its {@code ServerEntity} reads paths from.
+ * spare tick vanilla used to have. The toggle keybind can switch back to 26.3 at any time. Only
+ * the client side is swapped: the integrated server still needs the stepped tracker its
+ * {@code ServerEntity} reads paths from.
  */
 @Mixin(LivingEntity.class)
 public class LivingInterpolationMixin {
@@ -24,7 +25,7 @@ public class LivingInterpolationMixin {
     private void interpolationfix$linearInterpolation(CallbackInfoReturnable<InterpolationHandler> cir) {
         LivingEntity self = (LivingEntity) (Object) this;
         if (self.level().isClientSide()) {
-            cir.setReturnValue(LinearInterpolationHandler.create(self));
+            cir.setReturnValue(new ToggleableInterpolationHandler(self));
         }
     }
 }
