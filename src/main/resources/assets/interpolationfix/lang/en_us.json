@@ -1,5 +1,17 @@
 {
-  "key.interpolationfix.toggle": "Toggle Interpolation Fix",
-  "interpolationfix.toggle.on": "Interpolation Fix: ON (26.2 smoothing)",
-  "interpolationfix.toggle.off": "Interpolation Fix: OFF (vanilla 26.3 smoothing)"
+  "key.interpolationfix.toggle": "Cycle Interpolation Fix Mode",
+  "interpolationfix.mode.changed": "Interpolation Fix: %s",
+  "interpolationfix.mode.server": "Server Opt-In",
+  "interpolationfix.mode.server.description": "Smooth movement only on servers that support Interpolation Fix (or AntiStutter), and in singleplayer. Vanilla 26.3 everywhere else. Safe from anticheat bans.",
+  "interpolationfix.mode.always": "Always",
+  "interpolationfix.mode.always.description": "Smooth movement on every server. Servers whose anticheat is built around 26.3 will flag you for Reach and can ban you.",
+  "interpolationfix.mode.off": "Off",
+  "interpolationfix.mode.off.description": "Vanilla 26.3 movement everywhere.",
+  "interpolationfix.config.title": "Interpolation Fix",
+  "interpolationfix.config.mode": "Mode",
+  "interpolationfix.config.status.offline": "Not connected to a server.",
+  "interpolationfix.config.status.singleplayer": "Singleplayer: always safe to use.",
+  "interpolationfix.config.status.opted_in": "This server supports Interpolation Fix.",
+  "interpolationfix.config.status.not_opted_in": "This server hasn't opted in.",
+  "interpolationfix.config.warning": "Always mode can get you banned on servers whose anticheat expects 26.3."
 }

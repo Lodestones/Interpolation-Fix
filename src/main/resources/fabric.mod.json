@@ -3,7 +3,7 @@
   "id": "interpolationfix",
   "version": "${version}",
   "name": "Interpolation Fix",
-  "description": "Brings back the smooth 26.2 entity interpolation. Fixes the player and mob stutter introduced in 26.3 (MC-311974).",
+  "description": "Brings back the smooth 26.2 entity interpolation on servers that opt in. Fixes the player and mob stutter introduced in 26.3 (MC-311974).",
   "authors": [
     "Apollo30"
   ],
@@ -16,11 +16,23 @@
   "license": "MIT",
   "icon": "assets/interpolationfix/icon.png",
   "environment": "client",
+  "entrypoints": {
+    "client": [
+      "gg.lode.interpolationfix.InterpolationFix"
+    ],
+    "modmenu": [
+      "gg.lode.interpolationfix.ModMenuIntegration"
+    ]
+  },
   "mixins": [
     "interpolationfix.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
     "minecraft": "${minecraft_version}"
+  },
+  "suggests": {
+    "modmenu": "*"
   }
 }
