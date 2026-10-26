@@ -1,6 +1,6 @@
-name: InterpolationFix
+name: InterpolationBridge
 version: '${version}'
-main: gg.lode.interpolationfix.paper.InterpolationFixPlugin
+main: gg.lode.interpolationbridge.InterpolationBridge
 api-version: '1.21.6'
 folia-supported: true
 description: Opts this server in to the Interpolation Fix client mod.

@@ -1,4 +1,4 @@
-package gg.lode.interpolationfix.paper;
+package gg.lode.interpolationbridge;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +11,14 @@ import org.bukkit.event.player.PlayerUnregisterChannelEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * Opts this server in to Interpolation Fix. Listening on a channel is what makes the server list
- * it in the {@code minecraft:register} packet each player gets on join, and that list is all the
- * mod checks. Nothing is ever sent or received on these channels.
+ * Opts this server in to the Interpolation Fix client mod. Listening on a channel is what makes
+ * the server list it in the {@code minecraft:register} packet each player gets on join, and that
+ * list is all the mod checks. Nothing is ever sent or received on these channels.
  *
  * <p>Clients using the fix register the channel back, so an anticheat can call
  * {@link #usesLinearInterpolation(Player)} to know which players see other entities the 26.2 way.
  */
-public final class InterpolationFixPlugin extends JavaPlugin implements Listener {
+public final class InterpolationBridge extends JavaPlugin implements Listener {
     public static final String CHANNEL = "interpolationfix:linear_3";
     public static final String ANTISTUTTER_CHANNEL = "antistutter:linear_3";
 

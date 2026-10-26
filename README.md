@@ -48,9 +48,9 @@ Interpolation Fix puts players and mobs back on the 26.2 movement smoothing, whi
 
 ## For server owners
 
-Drop `Interpolation-Fix-Paper.jar` (from the [GitHub releases](https://github.com/Lodestones/Interpolation-Fix/releases)) into your `plugins` folder to opt your server in. It runs on Paper, Purpur and Folia 1.21.6 and newer. Only do this if your anticheat accepts 26.2 style interpolation from players using the mod.
+Drop the Interpolation Bridge plugin (`Interpolation-Bridge.jar` from [lode.gg](https://lode.gg/plugin/interpolation-bridge)) into your `plugins` folder to opt your server in. It runs on Paper, Purpur and Folia 1.21.6 and newer. Only do this if your anticheat accepts 26.2 style interpolation from players using the mod.
 
-Under the hood, a server opts in by registering the `interpolationfix:linear_3` (or `antistutter:linear_3`) plugin channel. Players using the fix register the channel back, so anticheats can tell who to model the 26.2 way. Plugins can check a player with `InterpolationFixPlugin.usesLinearInterpolation(player)`. Nothing is ever sent on the channel.
+Under the hood, a server opts in by registering the `interpolationfix:linear_3` (or `antistutter:linear_3`) plugin channel. Players using the fix register the channel back, so anticheats can tell who to model the 26.2 way. Plugins can check a player with `InterpolationBridge.usesLinearInterpolation(player)`. Nothing is ever sent on the channel.
 
 ## Compatibility
 
