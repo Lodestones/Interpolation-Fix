@@ -41,11 +41,16 @@ Interpolation Fix puts players and mobs back on the 26.2 movement smoothing, whi
 
 ## Details
 
-- **Client-side only.** Works on any server, no server mod or plugin needed.
-- **No dependencies.** Does not require Fabric API.
-- **Toggle keybind.** Bind "Toggle Interpolation Fix" under Controls > Misc to switch back to vanilla 26.3 smoothing at any time, like before joining a strict server. It's unbound by default and remembers your choice.
+- **Safe by default.** Out of the box the fix only turns on for servers that opt in, and in singleplayer. Everywhere else you get vanilla 26.3.
+- **Three modes.** Server Opt-In (default), Always, or Off. Change it in the Mod Menu settings screen, or bind "Cycle Interpolation Fix Mode" under Controls > Misc. Your choice is saved.
+- **Works with AntiStutter servers.** Servers that support LokaMC's AntiStutter turn this mod on too.
 - **Tiny.** No effect on performance.
-- **Singleplayer safe.** Only your client's view changes; worlds and servers are untouched.
+
+## For server owners
+
+Drop `Interpolation-Fix-Paper.jar` (from the [GitHub releases](https://github.com/Lodestones/Interpolation-Fix/releases)) into your `plugins` folder to opt your server in. It runs on Paper, Purpur and Folia 1.21.6 and newer. Only do this if your anticheat accepts 26.2 style interpolation from players using the mod.
+
+Under the hood, a server opts in by registering the `interpolationfix:linear_3` (or `antistutter:linear_3`) plugin channel. Players using the fix register the channel back, so anticheats can tell who to model the 26.2 way. Plugins can check a player with `InterpolationFixPlugin.usesLinearInterpolation(player)`. Nothing is ever sent on the channel.
 
 ## Compatibility
 
@@ -53,9 +58,9 @@ Built for **Fabric** on **Minecraft 26.3**. Works alongside Sodium, Iris, Entity
 
 ## Installation
 
-1. Install [Fabric Loader](https://fabricmc.net/use/) 0.19.5 or newer for Minecraft 26.3.
+1. Install [Fabric Loader](https://fabricmc.net/use/) 0.19.5 or newer for Minecraft 26.3, plus [Fabric API](https://modrinth.com/mod/fabric-api).
 2. Download the jar from [lode.gg](https://lode.gg/mod/interpolation-fix).
-3. Put it in your `mods` folder.
+3. Put it in your `mods` folder. [Mod Menu](https://modrinth.com/mod/modmenu) is optional, for the settings screen.
 
 ## Building
 
@@ -65,7 +70,7 @@ Requires Java 25.
 ./gradlew build
 ```
 
-The jar is written to `build/libs/`.
+The mod jar is written to `build/libs/` and the Paper plugin to `paper/build/libs/`.
 
 ## License
 
