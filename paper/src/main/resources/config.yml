@@ -1,0 +1,11 @@
+# Which channels to opt in with. Clients only turn the fix on when the server lists one of them.
+# Only opt in if your anticheat accepts 26.2 style interpolation from players using the mod,
+# or it may flag them for Reach.
+channels:
+  # Interpolation Fix by Lodestone.
+  interpolationfix: true
+  # LokaMC's AntiStutter, which uses the same 26.2 interpolation.
+  antistutter: true
+
+# Log to the console when a player turns the fix on or off.
+log-players: false

@@ -1,0 +1,8 @@
+name: InterpolationFix
+version: '${version}'
+main: gg.lode.interpolationfix.paper.InterpolationFixPlugin
+api-version: '1.21.6'
+folia-supported: true
+description: Opts this server in to the Interpolation Fix client mod.
+authors: [Apollo30]
+website: https://github.com/Lodestones/Interpolation-Fix

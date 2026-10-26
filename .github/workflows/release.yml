@@ -87,5 +87,5 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ steps.version.outputs.version }}
         run: |
-          gh release create "$GITHUB_REF_NAME" "build/libs/Interpolation-Fix-$VERSION.jar" \
+          gh release create "$GITHUB_REF_NAME" "build/libs/Interpolation-Fix-$VERSION.jar" "paper/build/libs/Interpolation-Fix-Paper-$VERSION.jar" \
             --title "v$VERSION" --notes-file changelog.md

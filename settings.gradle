@@ -9,3 +9,5 @@ pluginManagement {
 }
 
 rootProject.name = 'Interpolation-Fix'
+
+include 'paper'
